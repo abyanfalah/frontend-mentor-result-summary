@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: HankenGrotesk;
+	src: url('./assets/fonts/HankenGrotesk-VariableFont_wght.ttf');
+}
+
+html {
+	font-family: 'HankenGrotesk', sans-serif;
+	--light-slate-blue: hsl(252, 100%, 67%);
+	--light-royal-blue: hsl(241, 81%, 54%);
+
+	--violet-blue: hsla(256, 72%, 46%, 1);
+	--persian-blue: hsla(241, 72%, 46%, 0);
+}
+
+.text-wrap-balance {
+	text-wrap: balance;
+}
