@@ -1,26 +1,41 @@
-const { createApp, ref, onMounted } = Vue;
+const { createApp, ref, onBeforeMount } = Vue;
 
 createApp({
 	setup() {
-		const summaryData = ref([]);
-		async function getData() {
-			const full = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
-			let response = await fetch(`${full}/data.json`);
-			let data = await response.json();
+		const summaryData = ref([
+			{
+				"category": "Reaction",
+				"score": 80,
+				"icon": "icon-reaction.svg",
+				"color": "light_red"
+			},
+			{
+				"category": "Memory",
+				"score": 92,
+				"icon": "icon-memory.svg",
+				"color": "orangey_yellow"
+			},
+			{
+				"category": "Verbal",
+				"score": 61,
+				"icon": "icon-verbal.svg",
+				"color": "green_teal"
+			},
+			{
+				"category": "Visual",
+				"score": 72,
+				"icon": "icon-visual.svg",
+				"color": "cobalt_blue"
+			}
+		]);
 
-			return data;
-		}
 
-		onMounted(async () => {
-			summaryData.value = await getData();
+		onBeforeMount(() => {
 			summaryData.value = summaryData.value.map((data) => {
 				data.textColor = `text-${data.color}`;
 				data.bgColor = `bg-${data.color}`;
-
 				return data;
 			});
-
-			console.log(summaryData.value);
 		});
 
 		return {
